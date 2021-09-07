@@ -2,14 +2,19 @@ import React from 'react';
 import './App.sass';
 import { Account } from './components/Accaunt';
 import { Menu } from './components/Menu';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Router';
 
 class App extends React.Component {
   render() {
     return (
-     <header className="App-header">
-       <Menu />
-       <Account />
-     </header>
+      <BrowserRouter>
+        <header className="App-header">
+          <Menu />
+          <Account />
+        </header>
+        <Router />
+     </BrowserRouter>
     );
   }
 }
