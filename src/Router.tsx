@@ -6,7 +6,6 @@ export class Router extends React.Component {
     return (
       <Switch>
         <Route path="/" exact>
-          <p>Home page</p>
         </Route>
 
         <Route path="/employees">

@@ -9,7 +9,7 @@ interface Props {}
 
 export class Account extends React.Component<Props, State> {
   state = {
-    isAuthMenuOpen: true
+    isAuthMenuOpen: false
   };
 
   handleClick = () => {
@@ -22,8 +22,11 @@ export class Account extends React.Component<Props, State> {
     return (
       <>
         <div className="auth-wrapper">
-          <div>
-            Account
+          <div className="auth-avatar">
+            <p>JD</p>
+          </div>
+          <div className="auth-name">
+            John Doe
           </div>
           <div className="auth-img">
             <img
@@ -35,7 +38,7 @@ export class Account extends React.Component<Props, State> {
         </div>
         <div className={ this.state.isAuthMenuOpen ? 'authMenuOpen' : 'menuClose' }>
           <ul>
-            <li>
+            <li className="authMenu__li">
               <a className="authMenu__item" href="#">Управление аккаунтом</a>
             </li>
             <li>
