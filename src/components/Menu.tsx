@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../img/sandwich-menu-logo.svg';
-// import '../App.sass';
 import { Link } from 'react-router-dom';
 
 interface Props {}
