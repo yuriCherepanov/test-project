@@ -16,16 +16,18 @@ interface State {
 class App extends React.Component<Props, State> {
   state = {
     isAuthed: false,
-    isLoading: true
+    isLoading: false
   };
 
   componentDidMount() {
-    fetch(AUTH_API, {method: 'POST'})
+    this.setState({isLoading: true});
+
+    fetch(AUTH_API, {method: 'POSt'})
       .then(response => {
         if (!response.ok) {
           throw Error('Something wrong');
         }
-        return response.json();
+        return response.json();  
       })
       .then(data => {
         this.setState({
@@ -33,7 +35,10 @@ class App extends React.Component<Props, State> {
           isLoading: false
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        this.setState({isLoading: false});
+      });
   }
 
   render() {
