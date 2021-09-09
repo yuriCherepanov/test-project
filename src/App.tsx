@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.sass';
-import { Account } from './components/Accaunt';
+import { Account } from './components/Account';
 import { Menu } from './components/Menu';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './Router';
@@ -22,12 +22,13 @@ class App extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    fetch(AUTH_API, {method: 'POSt'})
+    //сначала надо запустить datafire
+    fetch(AUTH_API, {method: 'POST'})
       .then(response => {
         if (!response.ok) {
           throw Error('Something wrong');
         }
-        return response.json();  
+        return response.json();
       })
       .then(data => {
         this.setState({

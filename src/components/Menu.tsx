@@ -1,27 +1,17 @@
 import React from 'react';
 import logo from '../img/sandwich-menu-logo.svg';
 import { Link } from 'react-router-dom';
+import { MENU_ITEMS } from '../constants';
 
 interface Props {}
 
 interface State {
   isMenuOpen: boolean;
-  menuItems: object[];
 }
 
 export class Menu extends React.Component<Props, State> {
   state = {
-    isMenuOpen: false,
-    menuItems: [
-      {
-        name: 'Список сотрудников',
-        path: '/employees'
-      },
-      {
-        name: 'Список табельных листов',
-        path: '/time-sheets'
-      }
-    ]
+    isMenuOpen: false
   };
 
   handleClick = () => {
@@ -40,7 +30,7 @@ export class Menu extends React.Component<Props, State> {
           />
         <div className={ this.state.isMenuOpen ? 'menuOpen' : 'menuClose' }>
           <ul>
-            { this.state.menuItems.map((item, index) =>
+            { MENU_ITEMS.map((item, index) =>
               <li className="menuOpen__item" key={ index }>
                 <Link
                   to={ item.path }
