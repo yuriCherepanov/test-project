@@ -8,12 +8,16 @@ export class Router extends React.Component {
         <Route path="/" exact>
         </Route>
 
-        <Route path="/employees">
-          <p>Список сотрудников</p>
+        <Route path="/users">
+          <p>Пользователи</p>
         </Route>
 
-        <Route path="/time-sheets">
-          <p>Список табельных листов</p>
+        <Route path="/worktime">
+          <p>Учёт времени</p>
+        </Route>
+
+        <Route path="/settings">
+          <p>Настройки</p>
         </Route>
 
         <Route>

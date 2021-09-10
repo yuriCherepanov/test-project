@@ -1,0 +1,32 @@
+.menu
+  width: 300px
+  height: calc(100vh - 80px)
+  padding: 0 24px
+  font-size: 14px
+
+  &__item
+    margin-bottom: 25px
+    height: 56px
+    display: flex
+    align-items: center
+    padding-left: 24px
+    text-decoration: none
+    color: #797F8F
+
+    &:hover
+      border-radius: 16px
+      background-color: #F6F8F8
+      box-shadow: 0px 8px 32px rgba(69, 69, 69, 0.06)
+      cursor: pointer
+      color: #FA6400
+
+    &:hover .menu__img
+      filter: grayscale(0)
+
+  &__img
+    width: 24px
+    margin-right: 16px
+    filter: grayscale(1)
+
+.menuClose
+  display: none

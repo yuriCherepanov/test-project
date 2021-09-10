@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.sass';
+import './style/App.css';
 import { Account } from './components/Account';
 import { Menu } from './components/Menu';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './Router';
 import { AUTH_API } from './constants';
+import logo from './img/Vector.svg';
+import printer from './img/printer.svg';
+import gitPullRequest from './img/git-pull-request.svg';
+import userPlus from './img/user-plus.svg';
 
 interface Props {}
 
@@ -22,7 +26,7 @@ class App extends React.Component<Props, State> {
   componentDidMount() {
     this.setState({isLoading: true});
 
-    //сначала надо запустить datafire
+    //сначала надо в браузере запустить datafire
     fetch(AUTH_API, {method: 'POST'})
       .then(response => {
         if (!response.ok) {
@@ -46,12 +50,32 @@ class App extends React.Component<Props, State> {
     if (this.state.isAuthed) {
       return (
         <BrowserRouter>
-          <header className="App-header">
-            <Menu />
-            <Account />
-          </header>
-          <Router />
-      </BrowserRouter>
+          <div className="App-main">
+            <header className="App-header">
+              <div className="App-header__lGroup">
+                <img className="logo" src={ logo } alt="logo" />
+                <h1 className="App-name">UserApp</h1>
+                <h2 className="App-header__title">Управление пользователями</h2>
+              </div>
+              <div className="App-header__rGroup">
+                <a className="link_flex" href="#">
+                  <img className="App-header__icon" src={ printer } alt="printer" />
+                </a>
+                <a className="link_flex" href="#">
+                  <img className="App-header__icon" src={ gitPullRequest } alt="git pr" />
+                </a>
+                <a className="link_flex" href="#">
+                  <img className="App-header__icon" src={ userPlus } alt="add user" />
+                </a>
+                <Account />
+              </div>
+            </header>
+            <main className="main-block">
+              <Menu />
+              <Router />
+            </main>
+          </div>
+        </BrowserRouter>
       );
     } else if (this.state.isLoading) {
       return <p className="loader">Loading...</p>
