@@ -4,13 +4,19 @@ import { Account } from './components/Account';
 import { Menu } from './components/Menu';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './Router';
-import { AUTH_API } from './constants';
 import logo from './img/Vector.svg';
 import printer from './img/printer.svg';
 import gitPullRequest from './img/git-pull-request.svg';
 import userPlus from './img/user-plus.svg';
+import { connect } from 'react-redux';
+import { fetchAuth } from './store/app/actions';
+import { Button } from '@material-ui/core';
 
-interface Props {}
+interface Props {
+  isAuthed?: boolean,
+  checkAuth?: any,
+  status?: string
+}
 
 interface State {
   isAuthed: boolean;
@@ -24,30 +30,11 @@ class App extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.setState({isLoading: true});
-
-    //сначала надо в браузере запустить datafire
-    fetch(AUTH_API, {method: 'POST'})
-      .then(response => {
-        if (!response.ok) {
-          throw Error('Something wrong');
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.setState({
-          isAuthed: data.success,
-          isLoading: false
-        });
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({isLoading: false});
-      });
+    this.props.checkAuth()
   }
 
   render() {
-    if (this.state.isAuthed) {
+    if (this.props.isAuthed) {
       return (
         <BrowserRouter>
           <div className="App-main">
@@ -77,11 +64,44 @@ class App extends React.Component<Props, State> {
           </div>
         </BrowserRouter>
       );
-    } else if (this.state.isLoading) {
-      return <p className="loader">Loading...</p>
+    } else if (this.props.status === 'loading') {
+      return <p className="text-center">Loading...</p>
+    } else if (this.props.status === 'error') {
+      return (
+        <div className="text-center">
+          <p>Error! Try again</p>
+          <Button
+            onClick={ this.props.checkAuth }
+            variant="contained"
+            size="small"
+          >Log in</Button>
+        </div>
+      );
     }
-    return <p className="no-auth">Вы не авторизованы</p>;
+    return (
+      <div className="text-center">
+        <p className="text-center">Вы не авторизованы</p>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={ this.props.checkAuth }
+        >Log in</Button>
+      </div>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return state.app;
+};
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    checkAuth: () => dispatch(fetchAuth())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
