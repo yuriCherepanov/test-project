@@ -1,3 +1,4 @@
+import { Table } from './components/Table';
 import React from 'react';
 import { Route, Switch } from 'react-router';
 
@@ -9,7 +10,7 @@ export class Router extends React.Component {
         </Route>
 
         <Route path="/users">
-          <p>Пользователи</p>
+          <Table />
         </Route>
 
         <Route path="/worktime">

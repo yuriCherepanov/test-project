@@ -59,7 +59,9 @@ class App extends React.Component<Props, State> {
             </header>
             <main className="main-block">
               <Menu />
-              <Router />
+              <div className="main-block__right">
+                <Router />
+              </div>
             </main>
           </div>
         </BrowserRouter>

@@ -10,13 +10,14 @@
   background-size: cover
   height: 100vh
   background-color: #eff1f7
+  padding: 0 26px
 
 .App-header
   height: 80px
   display: flex
   justify-content: space-between
   align-items: center
-  padding: 0 26px
+  padding-left: 18px
 
   &__lGroup
     display: flex
@@ -48,8 +49,15 @@
 .main-block
   display: flex
 
+  &__right
+    flex-grow: 1
+    margin-left: 24px
+
 .text-center
   text-align: center
 
 @import Menu
 @import Account
+@import Table
+@import Filter
+@import Pagination
