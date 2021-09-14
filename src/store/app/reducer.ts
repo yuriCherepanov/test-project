@@ -2,12 +2,14 @@ import {
   SET_ERROR_STATUS,
   SET_IDLE_STATUS,
   SET_IS_AUTHED,
-  SET_LOADING_STATUS
+  SET_LOADING_STATUS,
+  SET_TOKEN
 } from "./actions";
 
 const initialState = {
   isAuthed: false,
-  status: 'idle'
+  status: 'idle',
+  token: ''
 };
 
 export const appReducer = (state = initialState, action: any) => {
@@ -34,6 +36,12 @@ export const appReducer = (state = initialState, action: any) => {
       return {
         ...state,
         status: 'idle'
+      };
+
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload
       };
 
     default:

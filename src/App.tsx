@@ -13,22 +13,14 @@ import { fetchAuth } from './store/app/actions';
 import { Button } from '@material-ui/core';
 
 interface Props {
-  isAuthed?: boolean,
-  checkAuth?: any,
-  status?: string
+  isAuthed?: boolean;
+  checkAuth?: any;
+  status?: string;
 }
 
-interface State {
-  isAuthed: boolean;
-  isLoading: boolean;
-}
+interface State {}
 
 class App extends React.Component<Props, State> {
-  state = {
-    isAuthed: false,
-    isLoading: false
-  };
-
   componentDidMount() {
     this.props.checkAuth()
   }

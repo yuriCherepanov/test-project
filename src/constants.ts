@@ -6,7 +6,9 @@ export const client_id: string = 'M2ZlNzk3ZDYzM2ZhOWQ1Mjg3YTZlNzk1';
 
 export const client_secret: string = 'YTA3Njg3OGM2MzRkYmFlNzk0YmEwNDZmM2I1MzFkY2VjMzhk';
 
-export const AUTH_API: string = 'https://next-mouse.dev.with-datafire.io/test_auth';
+export const AUTH_API_URL: string = `https://api.personio.de/v1/auth?client_id=${client_id}&client_secret=${client_secret}`;
+
+export const EMPLOYEES_API_URL: string = 'https://api.personio.de/v1/company/employees?limit=10&offset=0';
 
 export const MENU_ITEMS: {name: string, path: string, img: string}[] = [
   {

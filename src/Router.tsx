@@ -1,12 +1,13 @@
-import { Table } from './components/Table';
+import Table from './components/Table';
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 
 export class Router extends React.Component {
   render() {
     return (
       <Switch>
         <Route path="/" exact>
+          Home page
         </Route>
 
         <Route path="/users">
