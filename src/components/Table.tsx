@@ -3,21 +3,24 @@ import { Filter } from './Filter';
 import { Pagination } from './Pagination';
 import lock from '../img/lock.svg';
 import { connect } from 'react-redux';
-import { fetchEmployees } from '../store/table/actions';
+import { fetchEmployees, fetchEmployeeById, setEmployeeData } from '../store/table/actions';
+import { TableItem } from './TableItem';
+import { fakeEmployeesData } from '../constants';
 
 interface Props {
-  token: string;
-  table: any;
+  data: any;
   fetchEmployees: Function;
-  status: string;
   isLoaded: boolean;
+  setEmployeeData: Function;
 }
 
 interface State {}
 
 class Table extends React.Component<Props, State> {
   componentDidMount(){
-    this.props.fetchEmployees(this.props.token);
+    this.props.fetchEmployees();
+
+    this.props.setEmployeeData(fakeEmployeesData);
   }
 
   render() {
@@ -40,14 +43,9 @@ class Table extends React.Component<Props, State> {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td>Бубенцов Прохор Андреевич</td>
-                  <td>bubencovpa</td>
-                  <td>Аналитик</td>
-                  <td>Просмотр аналитических отчетов</td>
-                  <td></td>
-                </tr>
+                { this.props.data.map((item: any, index: any) =>
+                  <TableItem key={ index } />
+                ) }
               </tbody>
             </table>
           </div>
@@ -63,16 +61,16 @@ class Table extends React.Component<Props, State> {
 
 const mapStateToProps = (state: any) => {
   return {
-    token: state.app.token,
-    table: state.table.employeesDataList,
-    status: state.table.status,
+    data: state.table.currentEmployeesData,
     isLoaded: state.table.isLoaded
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    fetchEmployees: (token: string) => dispatch(fetchEmployees(token))
+    fetchEmployees: () => dispatch(fetchEmployees()),
+    fetchEmployeeById: (id: number) => dispatch(fetchEmployeeById(id)),
+    setEmployeeData: (data: any) => dispatch(setEmployeeData(data))
   };
 };
 

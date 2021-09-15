@@ -8,7 +8,7 @@ export const client_secret: string = 'YTA3Njg3OGM2MzRkYmFlNzk0YmEwNDZmM2I1MzFkY2
 
 export const AUTH_API_URL: string = `https://api.personio.de/v1/auth?client_id=${client_id}&client_secret=${client_secret}`;
 
-export const EMPLOYEES_API_URL: string = 'https://api.personio.de/v1/company/employees?limit=10&offset=0';
+export const EMPLOYEES_API_URL: string = 'https://api.personio.de/v1/company/employees';
 
 export const MENU_ITEMS: {name: string, path: string, img: string}[] = [
   {
@@ -25,5 +25,88 @@ export const MENU_ITEMS: {name: string, path: string, img: string}[] = [
     name: 'Настройки',
     path: '/settings',
     img: sliders
+  }
+];
+
+export const fakeEmployeesData = [
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
+  },
+  {
+    id: 4805056,
+    isClosed: false,
+    name: 'Александров Иван Иванович',
+    login: 'aleksandrovii',
+    role: 'Старший аналитик',
+    access: 'Визуализация данных, Просмотр аналитической информации'
   }
 ];

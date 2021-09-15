@@ -1,9 +1,15 @@
-import { SET_EMPLOYEES_DATA_LIST, SET_IS_LOADED, SET_STATUS } from "./actions";
+import {
+  SET_EMPLOYEES_DATA_LIST,
+  SET_EMPLOYEE_DATA,
+  SET_IS_LOADED,
+  SET_STATUS
+} from "./actions";
 
 const initialState = {
-  employeesDataList: {},
+  employeesDataList: [],
   status: 'idle',
-  isLoaded: false
+  isLoaded: false,
+  currentEmployeesData: []
 };
 
 export const tableReducer = (state = initialState, action: any) => {
@@ -24,6 +30,12 @@ export const tableReducer = (state = initialState, action: any) => {
       return {
         ...state,
         isLoaded: true
+      };
+
+    case SET_EMPLOYEE_DATA:
+      return {
+        ...state,
+        currentEmployeesData: action.payload
       };
 
     default:

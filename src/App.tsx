@@ -14,7 +14,7 @@ import { Button } from '@material-ui/core';
 
 interface Props {
   isAuthed?: boolean;
-  checkAuth?: any;
+  fetchAuth?: any;
   status?: string;
 }
 
@@ -22,7 +22,7 @@ interface State {}
 
 class App extends React.Component<Props, State> {
   componentDidMount() {
-    this.props.checkAuth()
+    this.props.fetchAuth();
   }
 
   render() {
@@ -65,7 +65,7 @@ class App extends React.Component<Props, State> {
         <div className="text-center">
           <p>Error! Try again</p>
           <Button
-            onClick={ this.props.checkAuth }
+            onClick={ this.props.fetchAuth }
             variant="contained"
             size="small"
           >Log in</Button>
@@ -78,7 +78,7 @@ class App extends React.Component<Props, State> {
         <Button
           variant="contained"
           size="small"
-          onClick={ this.props.checkAuth }
+          onClick={ this.props.fetchAuth }
         >Log in</Button>
       </div>
     );
@@ -91,7 +91,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    checkAuth: () => dispatch(fetchAuth())
+    fetchAuth: () => dispatch(fetchAuth())
   };
 };
 
