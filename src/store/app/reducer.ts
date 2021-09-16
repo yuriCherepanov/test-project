@@ -1,6 +1,6 @@
 import {
   SET_ERROR_STATUS,
-  SET_IDLE_STATUS,
+  SET_UPDATED_STATUS,
   SET_IS_AUTHED,
   SET_LOADING_STATUS,
   SET_TOKEN
@@ -32,10 +32,10 @@ export const appReducer = (state = initialState, action: any) => {
         status: 'error'
       };
 
-    case SET_IDLE_STATUS:
+    case SET_UPDATED_STATUS:
       return {
         ...state,
-        status: 'idle'
+        status: 'updated'
       };
 
     case SET_TOKEN:

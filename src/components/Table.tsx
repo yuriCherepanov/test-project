@@ -1,6 +1,6 @@
 import React from 'react';
 import { Filter } from './Filter';
-import { Pagination } from './Pagination';
+import Pagination from './Pagination';
 import lock from '../img/lock.svg';
 import { connect } from 'react-redux';
 import { fetchEmployees, fetchEmployeeById, setEmployeeData } from '../store/table/actions';
@@ -12,15 +12,16 @@ interface Props {
   fetchEmployees: Function;
   isLoaded: boolean;
   setEmployeeData: Function;
+  current_page: number;
+  limit: number;
 }
 
 interface State {}
 
 class Table extends React.Component<Props, State> {
   componentDidMount(){
-    this.props.fetchEmployees();
-
-    this.props.setEmployeeData(fakeEmployeesData);
+    this.props.fetchEmployees(0);
+    this.props.setEmployeeData(fakeEmployeesData.slice(0, this.props.limit));
   }
 
   render() {
@@ -44,12 +45,17 @@ class Table extends React.Component<Props, State> {
               </thead>
               <tbody>
                 { this.props.data.map((item: any, index: any) =>
-                  <TableItem key={ index } />
+                  <TableItem
+                    key={ index }
+                    data={ item }
+                  />
                 ) }
               </tbody>
             </table>
           </div>
-          <Pagination />
+          <Pagination
+            current_page={ this.props.current_page }
+          />
         </>
       );
     }
@@ -62,13 +68,15 @@ class Table extends React.Component<Props, State> {
 const mapStateToProps = (state: any) => {
   return {
     data: state.table.currentEmployeesData,
-    isLoaded: state.table.isLoaded
+    isLoaded: state.table.isLoaded,
+    current_page: state.table.current_page,
+    limit: state.table.limit
   };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    fetchEmployees: () => dispatch(fetchEmployees()),
+    fetchEmployees: (page: number) => dispatch(fetchEmployees(page)),
     fetchEmployeeById: (id: number) => dispatch(fetchEmployeeById(id)),
     setEmployeeData: (data: any) => dispatch(setEmployeeData(data))
   };

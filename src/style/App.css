@@ -6,6 +6,10 @@
   list-style: none;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 .App-main {
   background-image: url("../img/main-background.png");
   background-size: cover;
@@ -214,11 +218,13 @@
   -webkit-box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
           box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
   border-radius: 16px;
+  overflow-y: auto;
 }
 
 table {
   width: 100%;
   font-size: 12px;
+  border-collapse: collapse;
 }
 
 thead {
@@ -226,13 +232,20 @@ thead {
   color: #B8C7CC;
 }
 
-td {
+thead tr {
+  border-bottom: 1px solid #D9E3E8;
+}
+
+tr {
   border-bottom: 1px solid #EDEDED;
+}
+
+td {
   height: 48px;
 }
 
 .lock-img {
-  width: 72px;
+  min-width: 72px;
   text-align: center;
 }
 
@@ -281,6 +294,12 @@ td {
   border-radius: 12px;
   padding: 0 16px;
   font-size: 12px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("../img/select-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 50%;
   width: 100%;
   height: 100%;
   color: #797F8F;
@@ -303,5 +322,142 @@ td {
 
 .pagination-container {
   height: 88px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pages-container {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 35px;
+}
+
+.pages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.arrow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 33px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 35px;
+  padding: 5px;
+  border-radius: 8px;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.arrow:hover {
+  background-color: #F6F8F8;
+  -webkit-box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+          box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+  cursor: pointer;
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+.page {
+  width: 33px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 35px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #888888;
+}
+
+.page:hover {
+  background-color: #F6F8F8;
+  -webkit-box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+          box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+  cursor: pointer;
+  color: #FA6400;
+}
+
+.page_hover {
+  width: 33px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 35px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  background-color: #F6F8F8;
+  -webkit-box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+          box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06);
+  color: #FA6400;
+}
+
+.input {
+  width: 100px;
+  height: 21px;
+  position: fixed;
+  bottom: 33px;
+  background-color: transparent;
+  margin-left: 12px;
+  font-size: 12px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("../img/caret-down-fill.svg");
+  background-repeat: no-repeat;
+  background-position: right 50%;
+  border: none;
+  outline: none;
+}
+
+.table-item:hover {
+  background-color: #F6F8F8;
+  cursor: pointer;
+}
+
+.table-item:hover .trash-img {
+  visibility: visible;
+}
+
+.access {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 224px;
+}
+
+.trash-img {
+  visibility: hidden;
 }
 /*# sourceMappingURL=App.css.map */

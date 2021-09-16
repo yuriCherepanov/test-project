@@ -3,7 +3,7 @@ import { AUTH_API_URL } from "../../constants";
 export const SET_IS_AUTHED: string = 'APP::SET_IS_AUTHED';
 export const SET_LOADING_STATUS: string = 'APP::SET_LOADING_STATUS';
 export const SET_ERROR_STATUS: string = 'APP::SET_ERROR_STATUS';
-export const SET_IDLE_STATUS: string = 'APP::SET_IDLE_STATUS';
+export const SET_UPDATED_STATUS: string = 'APP::SET_UPDATED_STATUS';
 export const SET_TOKEN: string = 'APP::SET_TOKEN';
 
 export const setLoadingStatus = () => {
@@ -18,9 +18,9 @@ export const setErrorStatus = () => {
   };
 };
 
-export const setIdleStatus = () => {
+export const setUpdatedStatus = () => {
   return {
-    type: SET_IDLE_STATUS
+    type: SET_UPDATED_STATUS
   };
 };
 
@@ -37,6 +37,7 @@ export const setToken = (token: string) => {
     payload: token
   };
 };
+
 
 export const fetchAuth = () => {
   return (dispatch: any) => {
@@ -58,7 +59,7 @@ export const fetchAuth = () => {
         dispatch(setErrorStatus());
       })
       .finally(() => {
-        dispatch(setIdleStatus());
+        dispatch(setUpdatedStatus());
       });
   };
 };

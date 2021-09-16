@@ -55,7 +55,7 @@ export const fakeEmployeesData = [
   },
   {
     id: 4805056,
-    isClosed: false,
+    isClosed: true,
     name: 'Александров Иван Иванович',
     login: 'aleksandrovii',
     role: 'Старший аналитик',
@@ -71,7 +71,7 @@ export const fakeEmployeesData = [
   },
   {
     id: 4805056,
-    isClosed: false,
+    isClosed: true,
     name: 'Александров Иван Иванович',
     login: 'aleksandrovii',
     role: 'Старший аналитик',
@@ -79,7 +79,7 @@ export const fakeEmployeesData = [
   },
   {
     id: 4805056,
-    isClosed: false,
+    isClosed: true,
     name: 'Александров Иван Иванович',
     login: 'aleksandrovii',
     role: 'Старший аналитик',
