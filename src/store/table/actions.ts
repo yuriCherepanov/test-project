@@ -65,7 +65,7 @@ export const fetchEmployees = (page: number) => {
     dispatch(setStatus('loading'));
 
     axios.get(
-      `${EMPLOYEES_API_URL}?limit=${limit}&offset=${page * 10}`,
+      `${EMPLOYEES_API_URL}?limit=${limit}&offset=${page * limit}`,
       {
         method: 'GET',
         headers: {

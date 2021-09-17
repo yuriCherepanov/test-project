@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import React from 'react';
 import leftArrow from '../img/chevron_left.svg';
 import rightArrow from '../img/chevron_right.svg';
-import { fetchEmployees, setLimitOnPage } from '../store/table/actions';
+import { fetchEmployees, setLimitOnPage, setEmployeeData } from '../store/table/actions';
+import { fakeEmployeesData } from '../constants';
 
 interface Props {
   total_pages: any;
@@ -10,6 +11,7 @@ interface Props {
   fetchEmployees: Function;
   limit: number;
   setLimitOnPage: Function;
+  setEmployeeData: Function;
 }
 
 interface State {}
@@ -32,6 +34,8 @@ class Pagination extends React.Component<Props, State> {
   handleClick = (e: any) => {
     const page = +e.target.innerHTML;
     this.props.fetchEmployees(page - 1);
+    console.log(page);
+    
   }
 
   handleClickLeftArrow = () => {
@@ -51,6 +55,7 @@ class Pagination extends React.Component<Props, State> {
   handleChange = (e: any) => {
     this.props.setLimitOnPage(+e.target.value);
     this.props.fetchEmployees(0);
+    this.props.setEmployeeData(fakeEmployeesData.slice(0, +e.target.value));
   }
 
   render() {
@@ -93,7 +98,8 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Function) => {
   return {
     fetchEmployees: (page: number) => dispatch(fetchEmployees(page)),
-    setLimitOnPage: (limit: number) => dispatch(setLimitOnPage(limit))
+    setLimitOnPage: (limit: number) => dispatch(setLimitOnPage(limit)),
+    setEmployeeData: (data: any) => dispatch(setEmployeeData(data))
   };
 }
 

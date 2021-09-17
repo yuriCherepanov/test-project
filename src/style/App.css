@@ -146,6 +146,11 @@
   text-decoration: none;
 }
 
+.menu__item_hover .menu__img {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
 .menu__img {
   width: 24px;
   margin-right: 16px;

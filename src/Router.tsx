@@ -7,7 +7,7 @@ export class Router extends React.Component {
     return (
       <Switch>
         <Route path="/" exact>
-          Home page
+          <Redirect to="/users" />
         </Route>
 
         <Route path="/users">

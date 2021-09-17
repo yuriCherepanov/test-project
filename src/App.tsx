@@ -13,9 +13,9 @@ import { fetchAuth } from './store/app/actions';
 import { Button } from '@material-ui/core';
 
 interface Props {
-  isAuthed?: boolean;
-  fetchAuth?: any;
-  status?: string;
+  isAuthed: boolean;
+  fetchAuth: any;
+  status: string;
 }
 
 interface State {}
@@ -86,7 +86,10 @@ class App extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: any) => {
-  return state.app;
+  return {
+    isAuthed: state.app.isAuthed,
+    status: state.app.status
+  };
 };
 
 const mapDispatchToProps = (dispatch: Function) => {
