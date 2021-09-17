@@ -465,6 +465,10 @@ td {
   outline: none;
 }
 
+.table-item {
+  position: relative;
+}
+
 .table-item:hover {
   background-color: #F6F8F8;
   cursor: pointer;
@@ -472,6 +476,10 @@ td {
 
 .table-item:hover .trash-img {
   visibility: visible;
+}
+
+.table-item:hover .tooltip {
+  display: block;
 }
 
 .access {
@@ -483,5 +491,22 @@ td {
 
 .trash-img {
   visibility: hidden;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 70%;
+  width: 72px;
+  height: 24px;
+  background: #FFFFFF;
+  border: 1px solid #DCE0EB;
+  -webkit-box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  font-size: 10px;
+  text-align: center;
+  padding: 4px 0;
+  z-index: 1;
 }
 /*# sourceMappingURL=App.css.map */

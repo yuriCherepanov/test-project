@@ -18,6 +18,11 @@ class Users extends React.Component<any> {
     }, 500);
   }
 
+  // clickHandler = (e: any) => {
+  //   console.log(data);
+    
+  // }
+
   render() {
     if (this.props.isLoaded) {
     return (
