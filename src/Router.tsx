@@ -1,6 +1,7 @@
 import Table from './components/Table';
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
+import { UserCard } from './components/UserCard';
 
 export class Router extends React.Component {
   render() {
@@ -10,8 +11,12 @@ export class Router extends React.Component {
           <Redirect to="/users" />
         </Route>
 
-        <Route path="/users">
+        <Route path="/users" exact>
           <Table />
+        </Route>
+
+        <Route path="/users/:userId">
+          <UserCard />
         </Route>
 
         <Route path="/worktime">

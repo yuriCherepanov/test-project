@@ -1,6 +1,6 @@
 import React from 'react';
 import lock from '../img/lock.svg';
-import { TableItem } from './TableItem';
+import TableItem from './TableItem';
 import { fakeEmployeesData } from '../constants';
 import { connect } from 'react-redux';
 import { fetchEmployees, setEmployeeData } from '../store/table/actions';
