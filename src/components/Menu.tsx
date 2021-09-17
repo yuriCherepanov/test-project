@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../constants';
+import { withRouter } from 'react-router';
 
-export class Menu extends React.Component {
+class Menu extends React.Component<any> {
   render() {
+    const { location: { pathname } } = this.props;
+
     return (
       <ul className="menu">
         { MENU_ITEMS.map((item, index) =>
           <Link
             to={ item.path }
-            className="menu__item"
-            key={index}
+            className={ item.path === pathname ? "menu__item_hover" : "menu__item" }
+            key={ index }
           >
             <img className="menu__img" src={ item.img } alt="menu" />
             { item.name }
@@ -20,3 +23,5 @@ export class Menu extends React.Component {
     );
   }
 }
+
+export default withRouter(Menu);

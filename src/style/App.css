@@ -127,6 +127,25 @@
           filter: grayscale(0);
 }
 
+.menu__item_hover {
+  border-radius: 16px;
+  background-color: #F6F8F8;
+  -webkit-box-shadow: 0px 8px 32px rgba(69, 69, 69, 0.06);
+          box-shadow: 0px 8px 32px rgba(69, 69, 69, 0.06);
+  cursor: pointer;
+  color: #FA6400;
+  margin-bottom: 25px;
+  height: 56px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 24px;
+  text-decoration: none;
+}
+
 .menu__img {
   width: 24px;
   margin-right: 16px;

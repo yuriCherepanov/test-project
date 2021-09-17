@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/App.css';
 import { Account } from './components/Account';
-import { Menu } from './components/Menu';
+import Menu from './components/Menu';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './Router';
 import logo from './img/Vector.svg';
