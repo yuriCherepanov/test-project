@@ -67,7 +67,6 @@ export const fetchEmployees = (page: number) => {
     axios.get(
       `${EMPLOYEES_API_URL}?limit=${limit}&offset=${page * limit}`,
       {
-        method: 'GET',
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${token}`
@@ -92,14 +91,14 @@ export const fetchEmployees = (page: number) => {
 };
 
 export const fetchEmployeeById = (id: number) => {
-  return (dispatch: Function, getState: Function) => {
-    let url = `${EMPLOYEES_API_URL}/${id}`;
+  let url = `${EMPLOYEES_API_URL}/${id}`;
+
+  return (dispatch: any, getState: any) => {
     const { app: { token } } = getState();
 
     fetch(
       url,
       {
-        method: 'GET',
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${token}`

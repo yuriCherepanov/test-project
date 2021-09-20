@@ -1,7 +1,7 @@
 import Table from './components/Table';
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
-import { UserCard } from './components/UserCard';
+import UserCard from './components/UserCard';
 
 export class Router extends React.Component {
   render() {
