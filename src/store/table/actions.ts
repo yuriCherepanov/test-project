@@ -115,4 +115,4 @@ export const fetchEmployeeById = (id: number) => {
     })
     .catch(err => console.error(err));
   };
-}
+};

@@ -57,7 +57,6 @@
 
 .App-header__title {
   font-size: 16px;
-  margin-left: 156px;
 }
 
 .link_flex {
@@ -66,10 +65,25 @@
   display: inline-flex;
 }
 
+.link_flex_hide {
+  display: none;
+}
+
 .App-name {
   font-weight: bold;
   font-size: 18px;
   margin-left: 16px;
+  margin-right: 156px;
+}
+
+.arrow-btn {
+  margin-right: 16px;
+  background-color: transparent;
+  border: none;
+}
+
+.arrow-btn_hide {
+  display: none;
 }
 
 .logo {

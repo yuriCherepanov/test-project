@@ -7,6 +7,7 @@ import plus from '../img/plus.svg';
 import x from '../img/x.svg';
 import lock from '../img/lock.svg';
 import unlock from '../img/unlock.svg';
+import { setIsUserPage } from '../store/user/actions';
 
 class UserCard extends React.Component<any> {
   state= {data: {
@@ -19,6 +20,7 @@ class UserCard extends React.Component<any> {
   }};
   
   componentDidMount() {
+    this.props.setIsUserPage(true);
     const { userId } = this.props.match.params;
     // this.props.fetchEmployeeById(userId);
 
@@ -33,6 +35,10 @@ class UserCard extends React.Component<any> {
   }
 
   clickHandler = () => {}
+
+  componentWillUnmount() {
+    this.props.setIsUserPage(false);
+  }
 
   render() {
     const { name, isClosed, login, role, access, img } = this.state.data;
@@ -94,7 +100,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: Function) => {
   return {
-    fetchEmployeeById: (id: number) => dispatch(fetchEmployeeById(id))
+    fetchEmployeeById: (id: number) => dispatch(fetchEmployeeById(id)),
+    setIsUserPage: (flag: boolean) => dispatch(setIsUserPage(flag))
   };
 };
 
