@@ -80,6 +80,7 @@
   margin-right: 16px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .arrow-btn_hide {
@@ -550,6 +551,12 @@ td {
   border-radius: 4px;
   border: none;
   color: white;
+  cursor: pointer;
+}
+
+.card-btn:hover {
+  -webkit-filter: opacity(0.7);
+          filter: opacity(0.7);
 }
 
 .card-left-block {
@@ -601,6 +608,7 @@ td {
   background-repeat: no-repeat;
   background-position-y: 50%;
   background-position-x: 345px;
+  cursor: pointer;
 }
 
 .card-form__input-mini {
@@ -633,6 +641,7 @@ td {
           align-items: center;
   width: 32px;
   border-radius: 0 8px 8px 0;
+  cursor: pointer;
 }
 
 .btn-plus {
@@ -648,6 +657,7 @@ td {
   margin-left: 8px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .access-block {
@@ -689,6 +699,7 @@ td {
   font-weight: 600;
   border-radius: 4px;
   border: none;
+  cursor: pointer;
 }
 
 .btn__reset {
@@ -696,9 +707,17 @@ td {
   color: white;
 }
 
+.btn__reset:hover {
+  background-color: #4f5e75;
+}
+
 .btn__delete {
   background-color: transparent;
   color: #FA6400;
+}
+
+.btn__delete:hover {
+  background-color: #e6e6e6;
 }
 
 .change-log {
