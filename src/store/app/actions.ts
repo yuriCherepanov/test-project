@@ -51,8 +51,8 @@ export const fetchAuth = () => {
         return response.json();
       })
       .then(data => {
-        dispatch(setIsAuthed(data.success));
         dispatch(setToken(data.data.token));
+        dispatch(setIsAuthed(data.success));
       })
       .catch(err => {
         console.error(err);

@@ -8,20 +8,9 @@ import { fetchEmployees, setEmployeeData } from '../store/table/actions';
 
 class Users extends React.Component<any> {
   componentDidMount(){
-    if (this.props.isAuthed) {
-      this.props.fetchEmployees(0);
-      this.props.setEmployeeData(fakeEmployeesData.slice(0, this.props.limit));
-    }
-    setTimeout(() => {
-      this.props.fetchEmployees(0);
-      this.props.setEmployeeData(fakeEmployeesData.slice(0, this.props.limit));
-    }, 500);
+    this.props.fetchEmployees(0);
+    this.props.setEmployeeData(fakeEmployeesData.slice(0, this.props.limit));
   }
-
-  // clickHandler = (e: any) => {
-  //   console.log(data);
-    
-  // }
 
   render() {
     if (this.props.isLoaded) {

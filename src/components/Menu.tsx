@@ -8,8 +8,6 @@ class Menu extends React.Component<any> {
     const { location: { pathname }, isUserPage } = this.props;
 
     if (item.path === pathname) {
-      console.log(item.path, pathname);
-      
       return "menu__item_hover";
     } else if (item.name === 'Пользователи' && isUserPage) {
       return "menu__item_hover";
