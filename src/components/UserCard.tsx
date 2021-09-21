@@ -30,7 +30,7 @@ class UserCard extends React.Component<any> {
   getCurrentUserData = (userId: number) => {
     const data = this.props.currentEmployeesData.find((item: any) => {
       return item.id === userId;
-    })
+    });
     return data;
   }
 

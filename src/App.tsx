@@ -19,7 +19,6 @@ class App extends React.Component<any> {
   }
 
   goBackClickHadler = (e: any) => {
-    console.log(this.props);
     this.props.history.goBack();
   }
 

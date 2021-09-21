@@ -9,7 +9,7 @@ class TableItem extends React.Component<any> {
     x: 0
   };
 
-  clickHandler = (e: any) => {
+  clickHandler = () => {
     this.goTo(`/users/${this.props.data.id}`);
   }
 

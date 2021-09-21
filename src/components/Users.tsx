@@ -47,9 +47,7 @@ const mapStateToProps = (state: any) => {
   return {
     data: state.table.currentEmployeesData,
     isLoaded: state.table.isLoaded,
-    current_page: state.table.current_page,
     limit: state.table.limit,
-    isAuthed: state.app.isAuthed
   };
 };
 

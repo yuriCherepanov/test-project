@@ -47,8 +47,6 @@ class Pagination extends React.Component<Props, State> {
   handleClick = (e: any) => {
     const page = +e.target.innerHTML;
     this.props.fetchEmployees(page - 1);
-    console.log(page);
-    
   }
 
   handleClickLeftArrow = () => {
