@@ -1,63 +1,107 @@
 import React from 'react';
-import './App.sass';
+import './style/App.css';
 import { Account } from './components/Account';
-import { Menu } from './components/Menu';
-import { BrowserRouter } from 'react-router-dom';
+import Menu from './components/Menu';
 import { Router } from './Router';
-import { AUTH_API } from './constants';
+import logo from './img/Vector.svg';
+import printer from './img/printer.svg';
+import gitPullRequest from './img/git-pull-request.svg';
+import userPlus from './img/user-plus.svg';
+import { connect } from 'react-redux';
+import { fetchAuth } from './store/app/actions';
+import { Button } from '@material-ui/core';
+import arrow from './img/arrow-left.svg';
+import { withRouter } from 'react-router';
 
-interface Props {}
-
-interface State {
-  isAuthed: boolean;
-  isLoading: boolean;
-}
-
-class App extends React.Component<Props, State> {
-  state = {
-    isAuthed: false,
-    isLoading: false
-  };
-
+class App extends React.Component<any> {
   componentDidMount() {
-    this.setState({isLoading: true});
+    this.props.fetchAuth();
+  }
 
-    //сначала надо запустить datafire
-    fetch(AUTH_API, {method: 'POST'})
-      .then(response => {
-        if (!response.ok) {
-          throw Error('Something wrong');
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.setState({
-          isAuthed: data.success,
-          isLoading: false
-        });
-      })
-      .catch(err => {
-        console.error(err);
-        this.setState({isLoading: false});
-      });
+  goBackClickHadler = (e: any) => {
+    console.log(this.props);
+    this.props.history.goBack();
   }
 
   render() {
-    if (this.state.isAuthed) {
+    if (this.props.isAuthed) {
       return (
-        <BrowserRouter>
+        <div className="App-main">
           <header className="App-header">
-            <Menu />
-            <Account />
+            <div className="App-header__lGroup">
+              <img className="logo" src={ logo } alt="logo" />
+              <h1 className="App-name">UserApp</h1>
+              <button
+                className={ this.props.isUserPage ? "arrow-btn" : "arrow-btn_hide" }
+                onClick={this.goBackClickHadler}
+              >
+                <img src={ arrow } alt="go back" />
+              </button>
+              <h2 className="App-header__title">Управление пользователями</h2>
+            </div>
+            <div className="App-header__rGroup">
+              <a className="link_flex" href="#">
+                <img className="App-header__icon" src={ printer } alt="printer" />
+              </a>
+              <a className={ this.props.isUserPage ? "link_flex_hide" : "link_flex" } href="#">
+                <img className="App-header__icon" src={ gitPullRequest } alt="git pr" />
+              </a>
+              <a className={ this.props.isUserPage ? "link_flex_hide" : "link_flex" } href="#">
+                <img className="App-header__icon" src={ userPlus } alt="add user" />
+              </a>
+              <Account />
+            </div>
           </header>
-          <Router />
-      </BrowserRouter>
+          <main className="main-block">
+            <Menu isUserPage={ this.props.isUserPage } />
+            <div className="main-block__right">
+              <Router />
+            </div>
+          </main>
+        </div>
       );
-    } else if (this.state.isLoading) {
-      return <p className="loader">Loading...</p>
+    } else if (this.props.status === 'loading') {
+      return <p className="text-center">Loading...</p>
+    } else if (this.props.status === 'error') {
+      return (
+        <div className="text-center">
+          <p>Error! Try again</p>
+          <Button
+            onClick={ this.props.fetchAuth }
+            variant="contained"
+            size="small"
+          >Log in</Button>
+        </div>
+      );
     }
-    return <p className="no-auth">Вы не авторизованы</p>;
+    return (
+      <div className="text-center">
+        <p className="text-center">Вы не авторизованы</p>
+        <Button
+          variant="contained"
+          size="small"
+          onClick={ this.props.fetchAuth }
+        >Log in</Button>
+      </div>
+    );
   }
 }
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return {
+    isAuthed: state.app.isAuthed,
+    status: state.app.status,
+    isUserPage: state.user.isUserPage
+  };
+};
+
+const mapDispatchToProps = (dispatch: Function) => {
+  return {
+    fetchAuth: () => dispatch(fetchAuth())
+  };
+};
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App));

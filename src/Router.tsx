@@ -1,19 +1,30 @@
+import Table from './components/Table';
 import React from 'react';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
+import UserCard from './components/UserCard';
 
 export class Router extends React.Component {
   render() {
     return (
       <Switch>
         <Route path="/" exact>
+          <Redirect to="/users" />
         </Route>
 
-        <Route path="/employees">
-          <p>Список сотрудников</p>
+        <Route path="/users" exact>
+          <Table />
         </Route>
 
-        <Route path="/time-sheets">
-          <p>Список табельных листов</p>
+        <Route path="/users/:userId">
+          <UserCard />
+        </Route>
+
+        <Route path="/worktime">
+          <p>Учёт времени</p>
+        </Route>
+
+        <Route path="/settings">
+          <p>Настройки</p>
         </Route>
 
         <Route>

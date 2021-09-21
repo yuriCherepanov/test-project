@@ -1,0 +1,85 @@
+.pagination-container
+  height: 88px
+  display: flex
+  align-items: center
+
+.pages-container
+  flex-grow: 1
+  display: flex
+  justify-content: center
+  height: 35px
+
+.pages
+  display: flex
+  align-items: center
+
+.arrow
+  display: flex
+  width: 33px
+  justify-content: center
+  height: 35px
+  padding: 5px
+  border-radius: 8px
+  filter: grayscale(1)
+
+  &:hover
+    background-color: #F6F8F8
+    box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06)
+    cursor: pointer
+    filter: grayscale(0)
+
+.page
+  width: 33px
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 35px
+  border-radius: 8px
+  font-size: 14px
+  font-weight: 700
+  color: #888888
+
+  &_no-hover
+    width: 33px
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 35px
+    border-radius: 8px
+    font-size: 14px
+    font-weight: 700
+    color: #888888
+
+  &:hover
+    background-color: #F6F8F8
+    box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06)
+    cursor: pointer
+    color: $primaryColor
+
+  &_hover
+    width: 33px
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 35px
+    border-radius: 8px
+    font-size: 14px
+    font-weight: 700
+    background-color: #F6F8F8
+    box-shadow: 0px 8px 24px rgba(69, 69, 69, 0.06)
+    color: $primaryColor
+
+.input
+  width: 100px
+  height: 21px
+  position: fixed
+  bottom: 33px
+  background-color: transparent
+  margin-left: 12px
+  font-size: 12px
+  appearance: none
+  background-image: url('../img/caret-down-fill.svg')
+  background-repeat: no-repeat
+  background-position: right 50%
+  border: none
+  outline: none

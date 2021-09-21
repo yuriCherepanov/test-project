@@ -1,49 +1,36 @@
 import React from 'react';
-import logo from '../img/sandwich-menu-logo.svg';
 import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../constants';
+import { withRouter } from 'react-router';
 
-interface Props {}
+class Menu extends React.Component<any> {
+  getClassName = (item: any) => {
+    const { location: { pathname }, isUserPage } = this.props;
 
-interface State {
-  isMenuOpen: boolean;
-}
-
-export class Menu extends React.Component<Props, State> {
-  state = {
-    isMenuOpen: false
-  };
-
-  handleClick = () => {
-    this.setState((state: State) => ({
-      isMenuOpen: !state.isMenuOpen
-    }))
+    if (item.path === pathname) {
+      return "menu__item_hover";
+    } else if (item.name === 'Пользователи' && isUserPage) {
+      return "menu__item_hover";
+    }
+    return "menu__item";
   }
 
   render() {
     return (
-      <div className="logo">
-        <img
-          src={ logo }
-          alt="logo"
-          onClick={ this.handleClick }
-          />
-        <div className={ this.state.isMenuOpen ? 'menuOpen' : 'menuClose' }>
-          <ul>
-            { MENU_ITEMS.map((item, index) =>
-              <li className="menuOpen__item" key={ index }>
-                <Link
-                  to={ item.path }
-                  className="menuOpen__link"
-                  onClick={ this.handleClick }
-                >
-                  { item.name }
-                </Link>
-              </li>
-            ) }
-          </ul>
-        </div>
-      </div>
+      <ul className="menu">
+        { MENU_ITEMS.map((item, index) =>
+          <Link
+            to={ item.path }
+            className={this.getClassName(item)}
+            key={ index }
+          >
+            <img className="menu__img" src={ item.img } alt="menu" />
+            { item.name }
+          </Link>
+        ) }
+      </ul>
     );
   }
 }
+
+export default withRouter(Menu);
