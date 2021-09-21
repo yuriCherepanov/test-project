@@ -6,7 +6,7 @@ import { fetchEmployees, setLimitOnPage, setEmployeeData } from '../store/table/
 import { fakeEmployeesData } from '../constants';
 
 interface Props {
-  total_pages: any;
+  total_pages: number;
   current_page: number;
   fetchEmployees: Function;
   limit: number;
@@ -17,7 +17,8 @@ interface Props {
 interface State {}
 
 class Pagination extends React.Component<Props, State> {
-  getPages(count: number) {
+
+  getPages (count: number) {
     let result = [];
     for (let i = 1; i <= count; i++) {
       result.push(
@@ -29,6 +30,18 @@ class Pagination extends React.Component<Props, State> {
       );
     }
     return result;
+  }
+
+  cuerrentPagesView = () => {
+    const currPage = this.props.current_page;
+    const pageList = this.getPages(this.props.total_pages);
+
+    if (currPage === 1) {
+      return pageList.slice(currPage - 1, currPage + 2);
+    } else if (currPage === this.props.total_pages) {
+      return pageList.slice(currPage - 3, currPage);
+    }
+    return pageList.slice(currPage - 2, currPage + 1);
   }
 
   handleClick = (e: any) => {
@@ -77,7 +90,9 @@ class Pagination extends React.Component<Props, State> {
             <li className="arrow" onClick={ this.handleClickLeftArrow }>
               <img src={ leftArrow } alt="left" />
             </li>
-            { this.getPages(this.props.total_pages) }
+            { this.cuerrentPagesView() }
+            <li className="page_no-hover">...</li>
+            <li className="page_no-hover">{ this.props.total_pages }</li>
             <li className="arrow" onClick={ this.handleClickRightArrow }>
               <img src={ rightArrow } alt="right" />
             </li>
