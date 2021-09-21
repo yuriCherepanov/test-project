@@ -18,7 +18,7 @@ interface State {}
 
 class Pagination extends React.Component<Props, State> {
 
-  getPages (count: number) {
+  getPages(count: number) {
     let result = [];
     for (let i = 1; i <= count; i++) {
       result.push(
@@ -32,7 +32,7 @@ class Pagination extends React.Component<Props, State> {
     return result;
   }
 
-  cuerrentPagesView = () => {
+  currentPagesView = () => {
     const currPage = this.props.current_page;
     const pageList = this.getPages(this.props.total_pages);
 
@@ -90,9 +90,9 @@ class Pagination extends React.Component<Props, State> {
             <li className="arrow" onClick={ this.handleClickLeftArrow }>
               <img src={ leftArrow } alt="left" />
             </li>
-            { this.cuerrentPagesView() }
-            <li className="page_no-hover">...</li>
-            <li className="page_no-hover">{ this.props.total_pages }</li>
+            { this.currentPagesView() }
+            <li className="page page_no-hover">...</li>
+            <li className="page page_no-hover">{ this.props.total_pages }</li>
             <li className="arrow" onClick={ this.handleClickRightArrow }>
               <img src={ rightArrow } alt="right" />
             </li>
