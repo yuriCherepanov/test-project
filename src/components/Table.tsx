@@ -1,33 +1,18 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import { Filter } from './Filter';
-import Pagination from './Pagination';
-import { connect } from 'react-redux';
-import Users from './Users';
+import { Pagination } from './Pagination';
+import { Users } from './Users';
 
-interface Props {
-  current_page: number;
+export function Table() {
+  const { current_page } = useSelector((state: any) => state.table);
+
+  return (
+    <>
+      <div className="table-container">
+        <Filter />
+        <Users />
+      </div>
+      <Pagination current_page={ current_page } />
+    </>
+  );
 }
-
-interface State {}
-
-class Table extends React.Component<Props, State> {
-  render() {
-    return (
-      <>
-        <div className="table-container">
-          <Filter />
-          <Users />
-        </div>
-        <Pagination current_page={ this.props.current_page } />
-      </>
-    );
-  }
-}
-
-const mapStateToProps = (state: any) => {
-  return {
-    current_page: state.table.current_page
-  };
-};
-
-export default connect(mapStateToProps)(Table);

@@ -1,19 +1,24 @@
-import React from 'react';
 import lock from '../img/lock.svg';
-import TableItem from './TableItem';
 import { fakeEmployeesData } from '../constants';
-import { connect } from 'react-redux';
 import { fetchEmployees, setEmployeeData } from '../store/table/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { TableItem } from './TableItem';
 
+export function Users() {
+  const {
+    currentEmployeesData: data,
+    isLoaded,
+    limit
+  } = useSelector((state: any) => state.table);
+  const dispatch = useDispatch();
 
-class Users extends React.Component<any> {
-  componentDidMount(){
-    this.props.fetchEmployees(0);
-    this.props.setEmployeeData(fakeEmployeesData.slice(0, this.props.limit));
-  }
+  useEffect(() => {
+    dispatch(fetchEmployees(0));
+    dispatch(setEmployeeData(fakeEmployeesData.slice(0, limit)));
+  }, []);
 
-  render() {
-    if (this.props.isLoaded) {
+  if (isLoaded) {
     return (
       <table className="table">
         <thead>
@@ -29,7 +34,7 @@ class Users extends React.Component<any> {
           </tr>
         </thead>
         <tbody>
-          { this.props.data.map((item: any, index: any) =>
+          { data.map((item: any, index: any) =>
             <TableItem
               key={ index }
               data={ item }
@@ -38,27 +43,6 @@ class Users extends React.Component<any> {
         </tbody>
       </table>
     );
-    }
-    return <p className="text-center">Load data...</p>;
   }
+  return <p className="text-center">Load data...</p>;
 }
-
-const mapStateToProps = (state: any) => {
-  return {
-    data: state.table.currentEmployeesData,
-    isLoaded: state.table.isLoaded,
-    limit: state.table.limit,
-  };
-};
-
-const mapDispatchToProps = (dispatch: Function) => {
-  return {
-    fetchEmployees: (page: number) => dispatch(fetchEmployees(page)),
-    setEmployeeData: (data: any) => dispatch(setEmployeeData(data))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Users);
