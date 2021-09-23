@@ -64,29 +64,35 @@ export const fetchEmployees = (page: number) => {
     dispatch(fetchAuth());
     dispatch(setStatus('loading'));
 
-    axios.get(
-      `${EMPLOYEES_API_URL}?limit=${limit}&offset=${page * limit}`,
-      {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${token}`
-        }
-      }
-    ).then(response => {
-      // console.log(response);
-      dispatch(setEmployeesDataList(response.data.data));
-      dispatch(setTotalPages(response.data.metadata.total_pages));
-      dispatch(setCurrentPage(response.data.metadata.current_page));
-      dispatch(setLimitOnPage(response.data.limit));
-      dispatch(setIsLoaded());
-    })
-    .catch(err => {
-      console.error(err);
-      dispatch(setStatus('error'));
-    })
-    .finally(() => {
-      dispatch(setStatus('idle'));
-    });
+    // axios.get(
+    //   `${EMPLOYEES_API_URL}?limit=${limit}&offset=${page * limit}`,
+    //   {
+    //     headers: {
+    //       Accept: 'application/json',
+    //       Authorization: `Bearer ${token}`
+    //     }
+    //   }
+    // ).then(response => {
+    //   // console.log(response);
+    //   dispatch(setEmployeesDataList(response.data.data));
+    //   dispatch(setTotalPages(response.data.metadata.total_pages));
+    //   dispatch(setCurrentPage(response.data.metadata.current_page));
+    //   dispatch(setLimitOnPage(response.data.limit));
+    //   dispatch(setIsLoaded());
+    // })
+    // .catch(err => {
+    //   console.error(err);
+    //   dispatch(setStatus('error'));
+    // })
+    // .finally(() => {
+    //   dispatch(setStatus('idle'));
+    // });
+
+    // Personio trial account закончился, имитирую загрузку данных
+    dispatch(setTotalPages(28));
+    dispatch(setCurrentPage(page));
+    dispatch(setLimitOnPage(limit));
+    dispatch(setIsLoaded());
   };
 };
 

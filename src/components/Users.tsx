@@ -4,13 +4,14 @@ import { fetchEmployees, setEmployeeData } from '../store/table/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { TableItem } from './TableItem';
+import { tableSelector } from '../store/table/selectors';
 
 export function Users() {
   const {
     currentEmployeesData: data,
     isLoaded,
     limit
-  } = useSelector((state: any) => state.table);
+  } = useSelector(tableSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -31,27 +31,27 @@ export const MENU_ITEMS: {name: string, path: string, img: string}[] = [
 export const fakeEmployeesData = [
   {
     id: 4805056,
-    isClosed: false,
+    isClosed: true,
     name: 'Александров Иван Иванович',
     login: 'aleksandrovii',
     role: 'Старший аналитик',
     access: 'Визуализация данных, Просмотр аналитической информации'
   },
   {
-    id: 4805056,
+    id: 4805057,
     isClosed: false,
-    name: 'Александров Иван Иванович',
-    login: 'aleksandrovii',
-    role: 'Старший аналитик',
-    access: 'Визуализация данных, Просмотр аналитической информации'
+    name: 'Бубенцов Прохор Андреевич',
+    login: 'bubencovpa',
+    role: 'Аналитик',
+    access: 'Просмотр аналитических отчетов'
   },
   {
-    id: 4805056,
+    id: 4805058,
     isClosed: false,
-    name: 'Александров Иван Иванович',
-    login: 'aleksandrovii',
-    role: 'Старший аналитик',
-    access: 'Визуализация данных, Просмотр аналитической информации'
+    name: 'Быков Анатолий Степанович',
+    login: 'bykovas',
+    role: 'Аналитик',
+    access: 'Визуализация данных'
   },
   {
     id: 4805056,

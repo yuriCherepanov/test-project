@@ -3,10 +3,11 @@ import leftArrow from '../img/chevron_left.svg';
 import rightArrow from '../img/chevron_right.svg';
 import { fetchEmployees, setLimitOnPage, setEmployeeData } from '../store/table/actions';
 import { fakeEmployeesData } from '../constants';
+import { tableSelector } from "../store/table/selectors";
 
 export function Pagination({ current_page }: any) {
   const dispatch = useDispatch();
-  const { total_pages, limit } = useSelector((state: any) => state.table);
+  const { total_pages, limit } = useSelector(tableSelector);
 
   const getPages = (count: number) => {
     const result = [];

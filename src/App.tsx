@@ -12,13 +12,13 @@ import { fetchAuth } from './store/app/actions';
 import { useHistory } from 'react-router';
 import { Account } from './components/Account';
 import { Menu } from './components/Menu';
+import { appSelector } from './store/app/selectors';
+import { userSelector } from './store/user/selectors';
 
 export default function App() {
   const dispatch = useDispatch();
-  const {
-    app: { isAuthed, status },
-    user: { isUserPage }
-  } = useSelector((state: any) => state);
+  const { isAuthed, status } = useSelector(appSelector);
+  const { isUserPage } = useSelector(userSelector);
   const history = useHistory();
 
   useEffect(() => {

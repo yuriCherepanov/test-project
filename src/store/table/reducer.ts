@@ -15,7 +15,8 @@ const initialState = {
   currentEmployeesData: [],
   total_pages: null,
   current_page: null,
-  limit: 10
+  limit: 10,
+  filter_value: ''
 };
 
 export const tableReducer = (state = initialState, action: any) => {
